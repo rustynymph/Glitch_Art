@@ -7,14 +7,14 @@ using namespace std;
 #include <fstream>
 #include <cstdio>
 #include <iostream>
-#include <glitch.h>
+#include "glitch.h"
 
 int main(int argc, char* argv[]){
 	string name = argv[1];
-	string find = argv[2];
-	string replace = argv[3];
+	//char find = argv[2][0];
+	//char replace = argv[3][0];
 	string contents = readFile(name);
-	string new_contents = glitch(contents, find, replace);
+	string new_contents = glitch(contents);
 	writeFile(name, new_contents);
 	return 0;
 }
@@ -30,14 +30,19 @@ string readFile(string file){
 	return data; 
 }
 
-string glitch(string data, string find, string replace){
+string glitch(string data){
      int length = data.length();
-     for(int i = 0; i < length; i++){
-     	//data[i] = (char)data[i];
+     int first_quarter = length/4;
+     int piece = length/9;
+     //int offset = first_quarter + piece;
+     /*for(int i = first_quarter; i < length; i++){
+     	data[i] = (char)data[i];
      	if(data[i] == find){
      		data[i] = replace;
      	}
-     }
+     }*/
+
+     data.erase(first_quarter, piece);
      return data;
 }
 

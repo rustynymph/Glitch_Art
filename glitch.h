@@ -1,7 +1,7 @@
 #ifndef GLITCH_H
 #define GLITCH_H
 
-string glitch(string data, string find, string replace);
+string glitch(string data);
 string readFile(string file);
 void writeFile(string file, string new_contents);
 
